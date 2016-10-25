@@ -10,6 +10,15 @@
 			<div class="txtWrap">
 				<h1>TEXT</h1>
 			</div>
+			<div id="player">
+				<button>play</button>
+				<button>pause</button>
+				<button>mute</button>
+			</div>
+			<audio id="bgm" autoplay controls loop>
+				<source src="audio/Dog_Park.mp3" type="audio/mp3" />
+				Your browser does not support the audio tag.
+			</audio>
 		</header>
 		<section>
 			<article>
@@ -51,33 +60,66 @@
 				</div>
 			</article>
 		</section>
+		<div id="pop-up">
+			<div class="headWrap">
+				<span class="close-btn">close</span>
+			</div>
+			<div class="wrapper">
+				<div class="imgWrap"></div>
+				<div class="txtWrap"></div>
+			</div>
+		</div>
 		<script type="text/javascript">
-				//갤러리 만들기
-				var gallImg = [];
-				for (var i = 0; i < gallImg.length; i++){
-					var $li = $('<li></li>');
-					$li.prependTo('.gallList');
-					//클릭시 해당 이미지로 이동하는 버튼 <a>
-					var $gallBtn = $('<a></a>')
-					$li.prepend($gallBtn);
-					var $img = $('<img>');
-					$img.attr('src', gallImg[i]);
-					$li.append($img);
-				}
-				//click animation function
+		/*MUSIC PLAYER BUTTON*/
+			var $player = $('#player';);
+			var $playBtn = $player.children().eq(0);
+			var $pauseBtn = $player.children().eq(1);
+			var $muteBtn = $player.children().eq(2);
+			//audio file load
+			var $bgm = $('#bgm');
+			$bgm.trigger('load');
+			//audio player button function
+			$playBtn.click(function(){
+				console.log('play');
+				$bgm.trigger('play');
+			});
+			$pauseBtn.click(function(){
+				console.log('pause');
+				$bgm.trigger('pause');
+			});
+			$muteBtn.click(function(){
+				console.log('mute');
+				$bgm.prop('muted', !$bgm.prop('muted'));
+			});
+		/*POP UP ELEMENT*/
+			var $popUp = $('#pop-up');
+			var $popUpArr = [];
+		/*IMAGE SLIDE SHOW*/
+			var $gallImg = [];
+			for (var i = 0; i < gallImg.length; i++){
+				var $li = $('<li></li>');
+				$li.prependTo('.gallList');
+				//클릭시 해당 이미지로 이동하는 버튼 <a>
+				var $gallBtn = $('<a></a>')
+				$li.prepend($gallBtn);
+				var $img = $('<img>');
+				$img.attr('src', gallImg[i]);
+				$li.append($img);
+			}
+			//click animation function
 //				$gallBtn.click(function(){
 //					$('.gallList').animate({
 //						opacity: '0.5',
 //						left: ''
 //					});
 //				});
-				//2번째 section이 나타나는 애니메이션
-				$('#sect2').click(function(){
-				$('body section:nth-child(4)').animate({
-					opacity: '1',
-					bottom: '30px'
-					});
+			//2번째 section이 나타나는 애니메이션
+			$('#sect2').click(function(){
+			$('body section:nth-child(4)').animate({
+				opacity: '1',
+				bottom: '30px'
 				});
+			});
 		</script>
 	</body>
 </html>
