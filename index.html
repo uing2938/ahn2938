@@ -10,9 +10,13 @@
 	</head>
 	<body>
 		<header>
-			<div class="txtWrap">
-				<h1>TEXT</h1>
-			</div>
+			<nav>
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">GALLERY</a></li>
+					<li><a href="#">TEST</a></li>
+				</ul>
+			</nav>
 			<div id="player">
 				<button>play</button>
 				<button>pause</button>
@@ -63,7 +67,7 @@
 					stringsElement: $('.typed-strings'),
 					typeSpeed: 100,
 					backDelay: 250,
-					loop: true,
+					loop: false,
 					contentType: 'html', // or text
 					// defaults to false for infinite loop
 					loopCount: false,
@@ -108,8 +112,8 @@
 			//var popUpsrc = [popUpImgArr, popUpTxtArr];
 			
 			$.each(popUpImgArr, function(index, val){
-				var $li = $('<li></li>', {
-					'style': 'background:' + val
+				var $li = $('</li>', {
+					'style': 'background:' + 'url('+val+')'
 				});
 				$slider.append($li);
 				$imgList.append($li);
