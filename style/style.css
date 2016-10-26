@@ -179,6 +179,7 @@ button{
 }
 #pop-up #pop-up-slider-container{
 	overflow: hidden;
+	margin: 0 auto;
 }
 #pop-up .pop-up-slider{
 /*	width: 100%;*/
