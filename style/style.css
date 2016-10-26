@@ -45,13 +45,75 @@ table {
 }
 /*TEST*/
 header{
-	width: 100%;
-	height: 150px;
-	background-color: #abcdef;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 60px;
+	background-color: #1f1d1d;
+	z-index: 1;
+	overflow: hidden;
 }
 section{
 	width: 100%;
-	height: 300px;
+	height: 100vh;
+}
+section:nth-child(2){
+	position: relative;
+	/*align items center*/
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	background: #EB528D;
+}
+section:nth-child(2) > span{
+	color: #fff;
+	font-size: 72px;
+	font-weight: 700;
+	letter-spacing: 3px;
+}
+button{
+	outline: none;
+}
+#bgm{
+	display: none;
+}
+#player{
+	float: right;
+	margin-right: 50px;
+}
+#player > button{
+	width: 30px;
+	height: 30px;
+	background: #555;
+	border-radius: 3px;
+	color: #fff;
+	text-decoration: none;
+	border: none;
+}
+#player > button:hover{
+	background: #f0f0f0;
+	color: #555;
+}
+.container > .img-list{}
+.container > .img-list > li{}
+#pop-up{
+	position: fixed;
+	display: none;
+	width: 30vw;
+	height: 50vh;
+	background: #f0f0f0;
+	border-radius: 10px;
+}
+#pop-up .pop-up-slider-container{
+	width: 90%;
+}
+#pop-up .pop-up-slider{
+	width: 100%;
 }
 article > .container{
 	width: 80%;
@@ -74,6 +136,39 @@ article .container > ul > li{
 	margin: 0 auto;
 	cursor: pointer;
 }
-section:nth-child(4){
-	opacity: 0;
+/*typed animation cursor*/
+/* code for animated blinking cursor */
+.typed-cursor{
+	opacity: 1;
+	font-weight: 100;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	-ms-animation: blink 0.7s infinite;
+	-o-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+}
+@-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-ms-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-o-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
 }

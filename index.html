@@ -4,6 +4,9 @@
 		<title>test</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<!--typied animation-->
+		<script src="js/typed.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<header>
@@ -21,57 +24,60 @@
 			</audio>
 		</header>
 		<section>
+			<div class="typed-strings">
+				<p>Bonjour!</p>
+				<p>Gaspard et Lisa</p>
+			</div>
+			<span id="typed" style="white-space:pre;"></span>
+		</section>
+		<section>
 			<article>
 				<h2>Gallery</h2>
 				<div class="container">
-<!--					이미지메뉴목록-->
-					<div class="gallWrap">
-						<div class="imgWrap"></div>
-						<div class="imgWrap"></div>
-						<div class="imgWrap"></div>
-					</div>
-					<ul class="gallList"></ul>
+					<ul class="img-list"></ul>
 				</div>
 			</article>
 		</section>
 		<span id="sect2">next</span>
 		<section>
-			<article>
-				<h2>Video</h2>
-				<div class="container">
-					<dl>
-						<dt>TEXT</dt>
-						<dd>
-<!--							youtube video-->
-						</dd>
-					</dl>
-					<dl>
-						<dt>TEXT</dt>
-						<dd>
-<!--							youtube video-->
-						</dd>
-					</dl>
-					<dl>
-						<dt>TEXT</dt>
-						<dd>
-<!--							youtube video-->
-						</dd>
-					</dl>
-				</div>
+			<article class="ctrArt">
+				<h2>Characters</h2>
 			</article>
+		</section>
+		<section>
 		</section>
 		<div id="pop-up">
 			<div class="headWrap">
 				<span class="close-btn">close</span>
 			</div>
-			<div class="wrapper">
-				<div class="imgWrap"></div>
-				<div class="txtWrap"></div>
+			<div id="pop-up-slider-container">
+				<ul class="pop-up-slider"></ul>
+				<button class="left">LEFT</button>
+				<button class="right">RIGHT</button>
 			</div>
 		</div>
 		<script type="text/javascript">
+		//typed animation script
+			$(function(){
+				$("#typed").typed({
+					stringsElement: $('.typed-strings'),
+					typeSpeed: 100,
+					backDelay: 250,
+					loop: true,
+					contentType: 'html', // or text
+					// defaults to false for infinite loop
+					loopCount: false,
+					callback: function(){ foo(); },
+					resetCallback: function() { newTyped(); }
+				});
+				$(".reset").click(function(){
+					$("#typed").typed('reset');
+				});
+			});
+			function newTyped(){ /* A new typed object */ }
+			function foo(){ console.log("Callback"); }
 		/*MUSIC PLAYER BUTTON*/
-			var $player = $('#player';);
+			var $player = $('#player');
 			var $playBtn = $player.children().eq(0);
 			var $pauseBtn = $player.children().eq(1);
 			var $muteBtn = $player.children().eq(2);
@@ -93,33 +99,35 @@
 			});
 		/*POP UP ELEMENT*/
 			var $popUp = $('#pop-up');
-			var $popUpArr = [];
-		/*IMAGE SLIDE SHOW*/
-			var $gallImg = [];
-			for (var i = 0; i < gallImg.length; i++){
-				var $li = $('<li></li>');
-				$li.prependTo('.gallList');
-				//클릭시 해당 이미지로 이동하는 버튼 <a>
-				var $gallBtn = $('<a></a>')
-				$li.prepend($gallBtn);
-				var $img = $('<img>');
-				$img.attr('src', gallImg[i]);
-				$li.append($img);
-			}
-			//click animation function
-//				$gallBtn.click(function(){
-//					$('.gallList').animate({
-//						opacity: '0.5',
-//						left: ''
-//					});
-//				});
-			//2번째 section이 나타나는 애니메이션
-			$('#sect2').click(function(){
-			$('body section:nth-child(4)').animate({
-				opacity: '1',
-				bottom: '30px'
+			var $imgList = $('ul.img-list'); 
+			var $slider = $('.pop-up-slider');
+			var sliderWidth = $slider.width();
+			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
+			var maxPage = popUpImgArr.length;
+			
+			//var popUpsrc = [popUpImgArr, popUpTxtArr];
+			
+			$.each(popUpImgArr, function(index, val){
+				var $li = $('<li></li>', {
+					'style': 'background:' + val
 				});
+				$slider.append($li);
+				$imgList.append($li);
 			});
+			$imgList.children().css({
+				
+			})
+			$slider.width(maxPage * sliderWidth);
+			//popup function
+			function popUpBtn(){
+				$popUp.css({
+					display: block
+				});
+				$popUp.animate({
+					opacity : 1
+				});
+			}
+			var $popUpBtn = $('ctrArt').find('a');
 		</script>
 	</body>
 </html>
