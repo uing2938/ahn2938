@@ -103,7 +103,9 @@
 			var $sliderContainer = $('#pop-up-slider-container');
 			var $imgList = $('ul.img-list'); 
 			var $slider = $('.pop-up-slider');
-			var sliderWidth = $slider.width();
+			//slider control button
+			var $leftBtn = $('.left');
+			var $rightBtn = $('.right');
 			
 			//IMAGE ARRAY
 			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
@@ -113,6 +115,10 @@
 				var $li = $('<li></li>', {
 					style : 'width :' + '300px'
 				});
+				$li.css({
+					display: 'inline-block',
+					float: 'left'
+				})
 				var $img = $('<img width="100%">');
 				
 				$img.attr('src', val);
@@ -120,6 +126,11 @@
 				
 				$slider.append($li);
 			});
+			//slider width
+			var sliderWidth = parseInt($slider.css('width'));
+			sliderWidth = $slider.children('li').css('width');
+			console.log('sliderWidth :' + $slider.width);
+			$sliderContainer.width(sliderWidth);
 			$slider.width(maxPage * sliderWidth);
 			//li 복제
 			var liClone = $slider.children().clone();
@@ -133,8 +144,7 @@
 				$popUp.css({
 					display: 'block'
 				});
-				$popUp.fadeTo('fast', 1, function(){
-					//anmation complete
+				$popUp.animate({
 				});
 			});
 			//popup close
@@ -143,7 +153,8 @@
 				$popUp.css({
 					display: 'none'
 				});
-				$popUp.animate({
+				$popUp.fadeOut('slow', 0, function(){
+					//animation complete
 				});
 			});
 		</script>

@@ -166,7 +166,7 @@ button{
 #pop-up{
 	position: fixed;
 	display: none;
-	top: 10%;
+	top: 0;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
@@ -177,12 +177,11 @@ button{
 /*	opacity: 0;*/
 	z-index: 30;
 }
-#pop-up .pop-up-slider-container{
-	width: 90%;
+#pop-up #pop-up-slider-container{
 	overflow: hidden;
 }
 #pop-up .pop-up-slider{
-	width: 100%;
+/*	width: 100%;*/
 }
 article > .container{
 	width: 80%;
