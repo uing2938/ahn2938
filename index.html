@@ -4,7 +4,7 @@
 		<title>test</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
 		<!--typied animation-->
 		<script src="js/typed.js" type="text/javascript"></script>
 	</head>
@@ -131,7 +131,7 @@
 			sliderWidth = $slider.children('li').css('width');
 			console.log('width:' + sliderWidth);
 			$slider.css({
-				width: sliderWidth
+				width: parseInt(sliderWidth * maxPage)
 			})
 			//console.log('maxPage: '+ maxPage);
 			console.log('slider width:'+$slider.css('width'));
