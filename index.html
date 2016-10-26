@@ -12,9 +12,9 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="#">HOME</a></li>
-					<li><a href="#">GALLERY</a></li>
-					<li><a href="#">TEST</a></li>
+					<li><a href="#sec1">HOME</a></li>
+					<li><a href="#sec2">GALLERY</a></li>
+					<li><a href="#sec3">TEST</a></li>
 				</ul>
 			</nav>
 			<div id="player">
@@ -27,14 +27,14 @@
 				Your browser does not support the audio tag.
 			</audio>
 		</header>
-		<section>
+		<section id="sec1">
 			<div class="typed-strings">
 				<p>Bonjour!</p>
 				<p>Gaspard et Lisa</p>
 			</div>
 			<span id="typed" style="white-space:pre;"></span>
 		</section>
-		<section>
+		<section id="sec2">
 			<article>
 				<h2>Gallery</h2>
 				<div class="container">
@@ -42,17 +42,14 @@
 				</div>
 			</article>
 		</section>
-		<span id="sect2">next</span>
-		<section>
+		<section id="sec3">
 			<article class="ctrArt">
 				<h2>Characters</h2>
 			</article>
 		</section>
-		<section>
-		</section>
 		<div id="pop-up">
 			<div class="headWrap">
-				<span class="close-btn">close</span>
+				<button class="close-btn">close</button>
 			</div>
 			<div id="pop-up-slider-container">
 				<ul class="pop-up-slider"></ul>
@@ -103,35 +100,52 @@
 			});
 		/*POP UP ELEMENT*/
 			var $popUp = $('#pop-up');
+			var $sliderContainer = $('#pop-up-slider-container');
 			var $imgList = $('ul.img-list'); 
 			var $slider = $('.pop-up-slider');
 			var sliderWidth = $slider.width();
+			
+			//IMAGE ARRAY
 			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
 			var maxPage = popUpImgArr.length;
-			
-			//var popUpsrc = [popUpImgArr, popUpTxtArr];
-			
+			//li 생성 / 이미지 
 			$.each(popUpImgArr, function(index, val){
-				var $li = $('</li>', {
-					'style': 'background:' + 'url('+val+')'
+				var $li = $('<li></li>', {
+					style : 'width :' + '300px'
 				});
-				$slider.append($li);
-				$imgList.append($li);
-			});
-			$imgList.children().css({
+				var $img = $('<img width="100%">');
 				
-			})
+				$img.attr('src', val);
+				$img.prependTo($li);
+				
+				$slider.append($li);
+			});
 			$slider.width(maxPage * sliderWidth);
+			//li 복제
+			var liClone = $slider.children().clone();
+			liClone.appendTo($imgList);
+			
+			var $thumbimg = $imgList.children();
+			var $closeBtn = $('.close-btn'); 
 			//popup function
-			function popUpBtn(){
+			$thumbimg.on('click', function(){
+				console.log('pop up btn click');
 				$popUp.css({
-					display: block
+					display: 'block'
+				});
+				$popUp.fadeTo('fast', 1, function(){
+					//anmation complete
+				});
+			});
+			//popup close
+			$closeBtn.on('click', function(){
+				console.log('pop up close');
+				$popUp.css({
+					display: 'none'
 				});
 				$popUp.animate({
-					opacity : 1
 				});
-			}
-			var $popUpBtn = $('ctrArt').find('a');
+			});
 		</script>
 	</body>
 </html>
