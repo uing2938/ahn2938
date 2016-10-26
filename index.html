@@ -109,7 +109,6 @@
 			
 			//IMAGE ARRAY
 			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
-			var maxPage = popUpImgArr.length;
 			//li 생성 / 이미지 
 			$.each(popUpImgArr, function(index, val){
 				var $li = $('<li></li>', {
@@ -127,11 +126,16 @@
 				$slider.append($li);
 			});
 			//slider width
+			var maxPage = popUpImgArr.length;
 			var sliderWidth = parseInt($slider.css('width'));
 			sliderWidth = $slider.children('li').css('width');
-			console.log('sliderWidth :' + $slider.width);
+			console.log('width:' + sliderWidth);
+			$slider.css({
+				width: sliderWidth
+			})
+			//console.log('maxPage: '+ maxPage);
+			console.log('slider width:'+$slider.css('width'));
 			$sliderContainer.width(sliderWidth);
-			$slider.width(maxPage * sliderWidth);
 			//li 복제
 			var liClone = $slider.children().clone();
 			liClone.appendTo($imgList);
