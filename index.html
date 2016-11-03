@@ -247,7 +247,7 @@
 				var height = $(window).scrollTop();
 				var sec0h = $('#sec0').height();
 				
-				if(height >= sec0h){
+				if(height <= sec0h){
 					$('#scroll-line').animate({
 						height: height - 30
 					})
