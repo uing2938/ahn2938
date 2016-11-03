@@ -12,11 +12,13 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="#sec1">HOME</a></li>
+					<li><a href="#sec0">HOME</a></li>
+					<li><a href="#sec1">TEST</a></li>
 					<li><a href="#sec2">GALLERY</a></li>
 					<li><a href="#sec3">TEST</a></li>
 				</ul>
 			</nav>
+			<!--Music Player-->
 			<div id="player">
 				<button>play</button>
 				<button>pause</button>
@@ -27,7 +29,25 @@
 				Your browser does not support the audio tag.
 			</audio>
 		</header>
+		<!--MAP-->
+		<section id="sec0">
+			<article>
+				<h1></h1>
+				<div id="scroll-line"></div>
+				<div id="chara"></div>
+				<ul>
+					<li><div class="map-box"></div></li>
+				</ul>
+			</article>
+		</section>
+		<script>
+			$(window).scroll(function(){
+				$height = $('#sec0').scrollTop();
+			});
+			console.log('now scroll : ' + $height);
+		</script>
 		<section id="sec1">
+			<!--typing animation strings-->
 			<div class="typed-strings">
 				<p>Bonjour!</p>
 				<p>Gaspard et Lisa</p>
@@ -202,10 +222,10 @@
 			});
 			
 			var $thumbimg = $imgList.children();
-			var $closeBtn = $('.close-btn'); 
+			var $closeBtn = $('.close-btn');
+			
 			//popup function
 			$thumbimg.on('click', function(){
-				console.log('pop up btn click');
 				$popUp.css({
 					display: 'block'
 				});
@@ -214,13 +234,25 @@
 			});
 			//popup close
 			$closeBtn.on('click', function(){
-				console.log('pop up close');
 				$popUp.css({
 					display: 'none'
 				});
 				$popUp.fadeOut('slow', 0, function(){
 					//animation complete
 				});
+			});
+			//scroll
+			$line = $('#scroll-line'); //
+			$(window).scroll(function(){
+				var height = $(window).scrollTop();
+				var sec0h = $('#sec0').height();
+				
+				if(height >= sec0h){
+					$('#scroll-line').animate({
+						height: height - 30
+					})
+					
+				}
 			});
 		</script>
 	</body>
