@@ -96,16 +96,9 @@ section{
 }
 section{
 	position: relative;
-	/*align items center*/
-/*
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-*/
+}
+#sec0{
+	
 }
 #sec1{
 	display: -webkit-flex;
