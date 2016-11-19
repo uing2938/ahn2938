@@ -94,10 +94,28 @@ section{
 	width: 100%;
 	height: 100vh;
 }
-section{
-	position: relative;
+section article{
+	width: 85%;
+	height: 90%;
+	overflow-y: scroll;
 }
+/*scroll line section*/
 #sec0{
+}
+#sec0 > article > .scroll-wrap{
+	position: relative;
+	width: 100%;
+	height: 1500px;
+}
+#scroll-line{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 3px;
+	background: red;
+}
+#chara{
 	
 }
 #sec1{
