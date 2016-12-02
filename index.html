@@ -19,26 +19,27 @@
 					<li><a href="#sec3">TEST</a></li>
 				</ul>
 			</nav>
-			<!--Music Player-->
-			<div id="player">
-				<button>play</button>
-				<button>pause</button>
-				<button>mute</button>
-			</div>
-			<audio id="bgm" autoplay controls loop>
-<!--				<source src="audio/Dog_Park.mp3" type="audio/mp3" />-->
-				Your browser does not support the audio tag.
-			</audio>
 		</header>
+		<div id="hamburger-wrapper">
+			<div id="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
 		<!--MAP-->
 		<section id="sec0">
 			<article>
 				<div class="scroll-wrap">
 					<h1></h1>
-					<div id="scroll-line"></div>
-					<div id="chara"></div>
+					<div class="wrapper">
+						<!--스크롤 값에 따라 높이가 늘어나는 line-->
+						<div id="scroll-line"></div>
+					</div>
 					<ul>
-						<li><div class="map-box"></div></li>
 					</ul>
 				</div>
 			</article>
@@ -75,27 +76,73 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-		/*MUSIC PLAYER BUTTON*/
-			var $player = $('#player');
-			var $playBtn = $player.children().eq(0);
-			var $pauseBtn = $player.children().eq(1);
-			var $muteBtn = $player.children().eq(2);
-			//audio file load
-			var $bgm = $('#bgm');
-			$bgm.trigger('load');
-			//audio player button function
-			$playBtn.click(function() {
-				console.log('play');
-				$bgm.trigger('play');
+		$(document).ready(function() {
+			
+		/*NAV*/
+			console.log($('header'));
+			var $menu = $('#hamburger');
+			$menu.click(function() {
+				console.log('hamburger click');
+				
+				//메뉴 클릭시 open 클래스가 있을 경우
+				if( $menu.hasClass('open') ) {
+					$menu.removeClass('open'); //클래스 해제
+					$('header').stop().animate({
+						width: 0 //네비게이션 닫기
+					});
+				} else {
+					$menu.addClass('open');
+					$('header').stop().animate({
+						width: '500px' //네비게이션 열기
+					})
+				}
 			});
-			$pauseBtn.click(function() {
-				console.log('pause');
-				$bgm.trigger('pause');
+		/*scroll interaction*/
+			$line = $('#scroll-line'); //스크롤에 따라 늘어나는 라인
+			
+			var scrollImgs = [
+				'./img/scroll_img0.jpg',
+				'./img/scroll_img1.jpg',
+				'./img/scroll_img2.jpg'
+			]; //이미지 배열 생성
+			$.each(scrollImgs, function(idx, val) {
+				var $li = $('<li></li>');
+				$li.addClass('scroll-img-list');
+				
+				var $img = $('<img width="500px">');
+				
+				$img.attr('src', val);
+				$img.prependTo($li); //img를 li의 자식요소로 추가
+				
+				$('#sec0 .scroll-wrap > ul').append($li);
+				
 			});
-			$muteBtn.click(function() {
-				console.log('mute');
-				$bgm.prop('muted', !$bgm.prop('muted'));
+			
+			var $scrollImgList = $('.scroll-img-list');
+			
+			$.each($scrollImgList, function(i) {
+				$(this).css({
+					top: parseInt( i * 100 ) 
+				});
 			});
+			
+			var $scrollArtc = $('#sec0 > article');
+			$scrollArtc.scroll(function() {
+				var scroll = $scrollArtc.scrollTop();
+				//console.log('scroll 값:' + scroll);
+				
+				if( $scroll == 0 ){
+					//scroll-line:after animation
+				}
+				
+				$line.css({
+					height: parseInt( scroll * 1.5 ),
+					//scroll 값에 따라 $line의 길이가 늘어남
+					maxHeight : parseInt( $('.scroll-wrap').innerHeight() - 150 )
+					//$line의 높이값이 .scroll-wrap의 높이를 초과하지 않도록 제어
+				});
+			});
+			
 		/*POP UP ELEMENT*/
 			var $popUp = $('#pop-up');
 			var $sliderContainer = $('#pop-up-slider-container');
@@ -215,21 +262,11 @@
 				$popUp.css({
 					display: 'none'
 				});
-				$popUp.fadeOut('slow', 0, function(){
+				$popUp.fadeOut('slow', 0, function() {
 					//animation complete
 				});
 			});
-			//scroll
-			$line = $('#scroll-line');
-			var $scrollArtc = $('#sec0 > article');
-			$scrollArtc.scroll(function() {
-				var scroll = $scrollArtc.scrollTop();
-				console.log(scroll);
-				
-				$line.css({
-					height: parseInt( scroll * 2 )
-				});
-			});
+		})
 		</script>
 	</body>
 </html>
