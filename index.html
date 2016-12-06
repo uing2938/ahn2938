@@ -264,24 +264,22 @@
 				url: './JSON/books.json',
 				type: 'GET',
 				dataType: 'json',
-				success: function(books) { //데이터 전송 성공시 실행
+				success: function(res) { //데이터 전송 성공시 실행
 					console.log('json ok');
-					/*
-					$.each(books, function() {
+					$.each(res.books, function() {
 						var $books = $('<div/>');
 						
 						//섬네일 이미지 데이터
-						var $thumb = $('<img/>', {src: books.thumbImg});
+						var $thumb = $('<img/>', {src: res.books.thumbImg});
 						//타이틀 텍스트 데이터
-						var $title = $('<p/>', {text: books.title});
+						var $title = $('<p/>', {text: res.books.title});
 						//가격 텍스트 데이터
-						var $price = $('<p/>', {text: 'EUR' + books.price});
+						var $price = $('<p/>', {text: 'EUR' + res.books.price});
 						
 						$books.append($thumb);
 						$books.append($title);
 						$books.append($price);
 					});
-					*/
 				}, error: function() {
 					throw new Error('error');
 				}
