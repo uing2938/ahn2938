@@ -264,22 +264,27 @@
 			//책 목록 div
 			var $booksContainer = $('.books-container'); 
 			
-			$.ajax({
-				url: './JSON/books.json', //책목록 데이터
+			$.ajax('./JSON/books.json', {
 				type: 'GET',
 				dataType: 'json',
-				success: function( books ) { //데이터 전송 성공시 실행
+				success: function(books) { //데이터 전송 성공시 실행
 					console.log('json ok');
-					
-					var $books = $('<div/>');
-					
-					var $thumb = $('<img/>', {src: books.thumbImg});
-					var $title = $('<p/>', {text: books.title});
-					var $price = $('<p/>', {text: 'EUR' + books.price});
-					
-					$books.append($thumb);
-					$books.append($title);
-					$books.append($price);
+					/*
+					$.each(books, function() {
+						var $books = $('<div/>');
+						
+						//섬네일 이미지 데이터
+						var $thumb = $('<img/>', {src: books.thumbImg});
+						//타이틀 텍스트 데이터
+						var $title = $('<p/>', {text: books.title});
+						//가격 텍스트 데이터
+						var $price = $('<p/>', {text: 'EUR' + books.price});
+						
+						$books.append($thumb);
+						$books.append($title);
+						$books.append($price);
+					});
+					*/
 				}, error: function() {
 					throw new Error('error');
 				}
