@@ -1,18 +1,18 @@
 { "books" : [
 	{
 		"thumbImg": "./img/books_1",
-		"title": "Gaspard a ds Lunettes"
+		"title": "Gaspard a ds Lunettes",
 		"price": "6,00"
 	},{
-		"thumbImg": "./img/books_2"
-		"title": "a maison de Lisa"
+		"thumbImg": "./img/books_2",
+		"title": "a maison de Lisa",
 		"price": "1,89"
 	},{
 		"thumbImg": "./img/books_3",
 		"title": "Lisa in New York",
 		"price": "11,57"
 	},{
-		'thumbImg': "./img/books_4',
+		"thumbImg": "./img/books_4",
 		"title": "La jalousie de Gaspard",
 		"price": "4,49"
 	},{
