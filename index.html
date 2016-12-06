@@ -270,11 +270,11 @@
 					$.each(res.books, function() {
 						
 						//섬네일 이미지 데이터
-						var $thumb = $('<img/>', {src: res.books.thumbImg});
+						var $thumb = $('<img/>', {src: this.thumbImg});
 						//타이틀 텍스트 데이터
-						var $title = $('<p/>', {text: res.books.title});
+						var $title = $('<p/>', {text: this.title});
 						//가격 텍스트 데이터
-						var $price = $('<p/>', {text: 'EUR' + res.books.price});
+						var $price = $('<p/>', {text: 'EUR' + this.price});
 						
 						$books.append($thumb);
 						$books.append($title);
