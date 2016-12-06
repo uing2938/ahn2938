@@ -62,7 +62,8 @@
 		</section>
 		<section id="sec3">
 			<article class="ctrArt">
-				<h2>Characters</h2>
+				<h2>Books</h2>
+				<div class="books-container"></div>
 			</article>
 		</section>
 		<div id="pop-up">
@@ -82,7 +83,7 @@
 			console.log($('header'));
 			var $menu = $('#hamburger');
 			$menu.click(function() {
-				console.log('hamburger click');
+				//console.log('hamburger click');
 				
 				//메뉴 클릭시 open 클래스가 있을 경우
 				if( $menu.hasClass('open') ) {
@@ -131,14 +132,14 @@
 				var scroll = $scrollArtc.scrollTop();
 				//console.log('scroll 값:' + scroll);
 				
-				if( $scroll == 0 ){
+				if( scroll == 0 ){
 					//scroll-line:after animation
 				}
 				
 				$line.css({
-					height: parseInt( scroll * 1.5 ),
+					height: parseInt( scroll * 1.5 - 150 ),
 					//scroll 값에 따라 $line의 길이가 늘어남
-					maxHeight : parseInt( $('.scroll-wrap').innerHeight() - 150 )
+					maxHeight : parseInt( $('.scroll-wrap').innerHeight() )
 					//$line의 높이값이 .scroll-wrap의 높이를 초과하지 않도록 제어
 				});
 			});
@@ -206,7 +207,7 @@
 				$slider.animate({
 					marginLeft: cPage * cWidth * -1
 				}, {
-					duration: 1000,
+					duration: 500,
 					complete: function() {
 						isRolling = false;
 						if( cPage === 0 ) {
@@ -251,20 +252,37 @@
 			
 			//popup function
 			$thumbimg.on('click', function() {
-				$popUp.css({
-					display: 'block'
-				});
-				$popUp.animate({
-				});
+				$popUp.fadeIn()
 			});
 			//popup close
 			$closeBtn.on('click', function() {
-				$popUp.css({
-					display: 'none'
-				});
 				$popUp.fadeOut('slow', 0, function() {
 					//animation complete
 				});
+			});
+			/*BOOKS AJAX*/
+			//책 목록 div
+			var $booksContainer = $('.books-container'); 
+			
+			$.ajax({
+				url: './JSON/books.json', //책목록 데이터
+				type: 'GET',
+				dataType: 'json',
+				success: function( books ) { //데이터 전송 성공시 실행
+					console.log('json ok');
+					
+					var $books = $('<div/>');
+					
+					var $thumb = $('<img/>', {src: books.thumbImg});
+					var $title = $('<p/>', {text: books.title});
+					var $price = $('<p/>', {text: 'EUR' + books.price});
+					
+					$books.append($thumb);
+					$books.append($title);
+					$books.append($price);
+				}, error: function() {
+					throw new Error('error');
+				}
 			});
 		})
 		</script>
