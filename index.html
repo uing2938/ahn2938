@@ -78,9 +78,8 @@
 		</div>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			
 		/*NAV*/
-			console.log($('header'));
+			//console.log($('header'));
 			var $menu = $('#hamburger');
 			$menu.click(function() {
 				//console.log('hamburger click');
@@ -94,7 +93,7 @@
 				} else {
 					$menu.addClass('open');
 					$('header').stop().animate({
-						width: '500px' //네비게이션 열기
+						width: 250 //네비게이션 열기
 					})
 				}
 			});
@@ -123,7 +122,7 @@
 			
 			$.each($scrollImgList, function(i) {
 				$(this).css({
-					top: parseInt( i * 100 ) 
+					top: parseInt( i * 350 ) 
 				});
 			});
 			
@@ -177,12 +176,9 @@
 			var maxPage = popUpImgArr.length;
 			var sliderWidth = parseInt($slider.css('width'));
 			sliderWidth = $slider.children('li').css('width');
-			console.log('width:' + sliderWidth);
 			$slider.width(sliderWidth);
-			console.log('slider width:'+$slider.css('width'));
 			$sliderContainer.width(sliderWidth); //sliderContainer div
 			//$slider.width(parseInt(sliderWidth) * maxPage); //slider ul
-			console.log(maxPage);
 			//li 복제
 			var liClone = $slider.children().clone();
 			liClone.appendTo($imgList);
@@ -264,7 +260,8 @@
 			//책 목록 div
 			var $booksContainer = $('.books-container'); 
 			
-			$.ajax('./JSON/books.json', {
+			$.ajax({
+				url: './JSON/books.json',
 				type: 'GET',
 				dataType: 'json',
 				success: function(books) { //데이터 전송 성공시 실행
@@ -289,7 +286,7 @@
 					throw new Error('error');
 				}
 			});
-		})
+		});
 		</script>
 	</body>
 </html>

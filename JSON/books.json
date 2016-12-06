@@ -1,23 +1,23 @@
-{ 'books' : [
+{ "books" : [
 	{
-		'thumbImg': './img/books_1',
-		'title': 'Gaspard a ds Lunettes',
-		'price': '6,00'
+		"thumbImg": "./img/books_1",
+		"title": "Gaspard a ds Lunettes"
+		"price": "6,00"
 	},{
-		'thumbImg': './img/books_2',
-		'title': 'La maison de Lisa',
-		'price': '1,89'
+		"thumbImg": "./img/books_2"
+		"title": "a maison de Lisa"
+		"price": "1,89"
 	},{
-		'thumbImg': './img/books_3',
-		'title': 'Lisa in New York',
-		'price': '11,57'
+		"thumbImg": "./img/books_3",
+		"title": "Lisa in New York",
+		"price": "11,57"
 	},{
-		'thumbImg': './img/books_4',
-		'title': 'La jalousie de Gaspard',
-		'price': '4,49'
+		'thumbImg': "./img/books_4',
+		"title": "La jalousie de Gaspard",
+		"price": "4,49"
 	},{
-		'thumbImg': './img/books_5',
-		'title': 'Gaspard est amoureux',
-		'price': '6,00'
+		"thumbImg": "./img/books_5",
+		"title": "Gaspard est amoureux",
+		"price": "6,00"
 	}
 ]}
