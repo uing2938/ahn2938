@@ -229,9 +229,9 @@ section article{
 	right: 0;
 	bottom: -150px;
 	margin: 0 auto;
-	width: 150px;
-	height: 150px;
-	background: url('../img/chara.png') no-repeat;
+	width: 76px;
+	height: 87px;
+	background: url('../img/scroll_line_img1.png') no-repeat;
 	background-size: cover;
 }
 #sec0 .scroll-wrap ul{
@@ -243,8 +243,13 @@ section article{
 	position: absolute;
 	width: 200px;
 	height: 200px;
+	opacity: 0;
 	overflow: hidden;
 }
+#sec0 .scroll-img-list:nth-child(odd){
+	right: 0;
+}
+#sec0 .scroll-img-list > img{}
 #chara{
 	
 }
