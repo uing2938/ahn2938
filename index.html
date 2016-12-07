@@ -163,7 +163,7 @@
 					}
 				});
 			
-			}); //$scrollArtc.scroll(); //스크롤이 안 되는 경우가 없도록 trigger
+			}); $scrollArtc.scroll(); //스크롤이 안 되는 경우가 없도록 trigger
 			
 		/*POP UP ELEMENT*/
 			var $popUp = $('#pop-up');
@@ -302,8 +302,9 @@
 						var $price = $('<p/>', {text: 'EUR ' + this.price});
 						
 						//$books div에 각 데이터 노드를 추가
-						$books.append($thumb);
+						var $imgWrap = $('<div/>').append($thumb);
 						//$books.append($('<img src=' + val.thumbImg + 'alt="thumb" />'));
+						$books.append($imgWrap);
 						$books.append($title);
 						$books.append($price);
 						

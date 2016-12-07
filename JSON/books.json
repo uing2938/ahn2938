@@ -19,5 +19,21 @@
 		"thumbImg": "./JSON/img/books_5.jpg",
 		"title": "Gaspard est amoureux",
 		"price": "6,00"
+	},{
+		"thumbImg": "./JSON/img/books_6.jpg",
+		"title": "Gaspard à la mer",
+		"price": "6,00"
+	},{
+		"thumbImg": "./JSON/img/books_7.jpg",
+		"title": "Gaspard Et Lisa Au Cinema",
+		"price": "150,34"
+	},{
+		"thumbImg": "./JSON/img/books_8.jpg",
+		"title": "Lisa est malade",
+		"price": "6,00"
+	},{
+		"thumbImg": "./JSON/img/books_9.jpg",
+		"title": "Gaspard A L'Hopital",
+		"price": "6,00"
 	}
 ]}
