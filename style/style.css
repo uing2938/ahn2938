@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:700');
 @import url('https://fonts.googleapis.com/css?family=Schoolbell');
 button{
+	background: none;
+	border: none;
 	outline: none;
 	cursor: pointer;
 }
@@ -216,7 +218,10 @@ section h2{
 	padding: 30px 100px;
 }
 /*scroll line section*/
-#scroll-section{background: #eee;}
+#scroll-section{
+	background: #eee url('../img/city.png') bottom;
+	background-repeat: repeat-x;
+}
 #scroll-section > article{
 	border: none;
 }
@@ -326,27 +331,57 @@ section article{
 	float: left;
 	width: 300px;
 	height: 300px;
+	opacity: 0;
 	overflow: hidden;
 	cursor: pointer;
 }
 #pop-up{
 	position: fixed;
 	display: none;
-	top: 30%;
+	top: 100px;
 	left: 0;
 	right: 0;
+	width: 500px;
 	margin: 0 auto;
-	width: 30vw;
-	height: 50vh;
 	border-radius: 10px;
 	z-index: 30;
+}
+#pop-up .headWrap{
+	margin-top: -50px;
+	float: right;
+}
+#pop-up .headWrap .close-btn{
+	font-size: 36px;
+	background: none;
+	border: none;
+	color: #fff;
+	transition: .3s;
 }
 #pop-up #pop-up-slider-container{
 	overflow: hidden;
 	margin: 0 auto;
 }
 #pop-up .pop-up-slider{
-/*	width: 100%;*/
+	width: 500px;
+	height: 550px;
+}
+#pop-up .pop-up-slider > li{
+	width: 500px;
+/*	box-shadow: 0 0 30px #fff;*/
+}
+/*SLIDER LEFT, RIGHT BUTTON*/
+#pop-up-slider-container button{
+	color: #fff;
+	font-size: 36px;
+	transition: .3s;
+}
+#pop-up-slider-container button.left{}
+#pop-up-slider-container button.right{
+	float: right;
+}
+#pop-up .headWrap .close-btn:hover,
+#pop-up-slider-container button:hover{
+	color: deeppink;
 }
 article > .container{
 	width: 100%;
@@ -367,8 +402,10 @@ article > .container{
 	width: 250px;
 	height: 300px;
 	margin: 1.5em;
+	margin-top: 50px;
 	text-align: center;
-	line-height: 30px;
+	line-height: 35px;
+	opacity: 0;
 }
 #books-section .books-container .books-info > div{
 	width: 250px;
@@ -379,9 +416,9 @@ article > .container{
 	width: 100%;
 }
 #books-section .books-container .books-info > h3{
-	font-size: 24x;
+	font-size: 24px;
 }
 #books-section .books-container .books-info > p{
-	font-size: 12px;
+	font-size: 18px;
 	color: #555;
 }
