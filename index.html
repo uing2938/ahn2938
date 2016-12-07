@@ -333,12 +333,12 @@
 				//console.log(Boolean( sectionHeight < windowScroll));
 				
 				//books section 적용
-				if( sectionHeight < windowScroll ) {
+				if( sectionHeight + sectionHeight / 2 < windowScroll ) {
 					$.each( $('.container .img-list > li'), function( idx ) {
 						$(this).delay( idx * 400 ).fadeTo( 700, 1 );
 					});
 				//gall section
-				} else if ( 0 < windowScroll <= sectionHeight * 2 ) {
+				} else if ( sectionHeight / 2 < windowScroll <= sectionHeight * 2 ) {
 					//console.log('scrolllllll');
 					//두번째 섹션에 스크롤이 도달했을 때 books-info div가 순차적으로 fadeIn 되도록
 					$.each( $('.books-info'), function( idx ) {
