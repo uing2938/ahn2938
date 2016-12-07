@@ -205,10 +205,14 @@ header nav li > a{
 section{
 	width: 100%;
 	height: 100vh;
+	background-position: bottom;
+	background-repeat: repeat-x;
 }
 section article{
-	width: 85%;
-	height: 90%;
+	width: 90%;
+	height: 80%; 
+	padding-top: 50px;
+	margin: 0 auto;
 	overflow: hidden;
 	overflow-y: auto;
 }
@@ -219,8 +223,8 @@ section h2{
 }
 /*scroll line section*/
 #scroll-section{
-	background: #eee url('../img/city.png') bottom;
-	background-repeat: repeat-x;
+	background-color: #eee; 
+	background-image: url('../img/city.png');
 }
 #scroll-section > article{
 	border: none;
@@ -315,13 +319,10 @@ section h2{
 	letter-spacing: 3px;
 }
 */
-section article{
-	width: 90%;
-	height: 80%; 
-	padding-top: 50px;
-	margin: 0 auto;
+#gall-section{
+	background-color: #ff9681;
+	background-image: url('../img/city3.png');
 }
-#gall-section{background: #ff9681;}
 .container{
 	width: 900px;
 	margin: 30px auto;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>test</title>
+		<title>Gaspard et Lisa</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<!--favicon-->
@@ -53,6 +53,7 @@
 				<div class="books-container"></div>
 			</article>
 		</section>
+		<!--slide gallery section-->
 		<section id="gall-section">
 			<h2>Galerie</h2>
 			<article>
@@ -66,7 +67,9 @@
 				<button class="close-btn"><i class="fa fa-close"></i></button>
 			</div>
 			<div id="pop-up-slider-container">
+				<!--imgs-->
 				<ul class="pop-up-slider"></ul>
+				<!--left, right button-->
 				<button class="left"><i class="fa fa-arrow-left"></i></button>
 				<button class="right"><i class="fa fa-arrow-right"></i></button>
 			</div>
@@ -116,6 +119,7 @@
 			
 			var $scrollImgList = $('.scroll-img-list'); //스크롤이미지 li
 			
+			//$scrollImgList의 position top 값을 조절(450씩 +)
 			$.each($scrollImgList, function(i) {
 				$(this).css({
 					top: parseInt( i * 450 + 300) 
@@ -162,6 +166,44 @@
 					}
 				});
 			}); $scrollArtc.scroll(); //스크롤이 안 되는 경우가 없도록 trigger
+			/*BOOKS AJAX*/
+			//책 목록 div
+			var $booksContainer = $('.books-container'); //책 리스트 묶음
+			
+			$.ajax({
+				url: './JSON/books.json',
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) { //데이터 전송 성공시 실행
+					//console.log('json ok');
+					$.each(res.books, function(idx, val) {
+						//console.log(idx);
+						//console.log(val);
+						
+						var $books = $('<div/>'); //책 리스트
+						//섬네일 이미지 데이터
+						var $thumb = $('<img/>', {src: this.thumbImg});
+						//타이틀 텍스트 데이터
+						var $title = $('<h3/>', {text: this.title});
+						//가격 텍스트 데이터
+						var $price = $('<p/>', {text: 'EUR ' + this.price});
+						
+						//$books div에 각 데이터 노드를 추가
+						var $imgWrap = $('<div/>').append($thumb);
+						//$books.append($('<img src=' + val.thumbImg + 'alt="thumb" />'));
+						$books.append($imgWrap);
+						$books.append($title);
+						$books.append($price);
+						
+						$books.addClass('books-info');
+						
+						//ajax에서 추가된 노드를 $booksContainer div에 추가
+						$books.appendTo($booksContainer);
+					});
+				}, error: function() {
+					throw new Error('error'); //에러
+				}
+			});
 			
 		/*POP UP ELEMENT*/
 			var $popUp = $('#pop-up');
@@ -247,7 +289,7 @@
 					} else {
 						currentPage = 0;
 					}
-					move(currentPage, parseInt(sliderWidth));
+					move( currentPage, parseInt( sliderWidth ) );
 				}
 			});
 			$rightBtn.on('click', function() {
@@ -257,7 +299,7 @@
 					} else {
 						currentPage = maxPage + 1;
 					}
-					move(currentPage, parseInt(sliderWidth));
+					move( currentPage, parseInt( sliderWidth ) );
 				}
 			});
 			
@@ -265,11 +307,11 @@
 			var $closeBtn = $('.close-btn');
 			
 			//popup function
-			$.each( $thumbimg, function( idx, val ) {
+			$.each( $thumbimg, function( idx ) {
 				$(this).on('click', function() {
-					console.log('thumbnail click');
-					$slider.width(parseInt(sliderWidth) * (maxPage + 2)).css({
-						'margin-left': -1 * ( idx + 1 ) * parseInt(sliderWidth)
+					//console.log('thumbnail click');
+					$slider.width( parseInt( sliderWidth ) * ( maxPage + 2 ) ).css({
+						'margin-left': -1 * ( idx + 1 ) * parseInt( sliderWidth )
 						//idx 값을 곱하여 $thumbimg 클릭시 해당 이미지가 출력되도록 설정
 						//idx는 0, 1, 2 값을 가지기 때문에 0이 되지 않도록 ( idx + 1 )
 					});
@@ -278,58 +320,11 @@
 				});
 			});
 			
-			/*
-			$thumbimg.on('click', function() {
-				$popUp.fadeIn()
-			});
-			*/
 			//popup close
 			$closeBtn.on('click', function() {
-				$popUp.fadeOut('slow', 0, function() {
-					//animation complete
-					$slider.width(parseInt(sliderWidth) * (maxPage + 2)).css({
-						'margin-left': -1 * parseInt(sliderWidth) //이미지 순서를 처음으로 초기화
-					});
-				});
+				$popUp.fadeOut( 'slow', 0 );
 			});
-			/*BOOKS AJAX*/
-			//책 목록 div
-			var $booksContainer = $('.books-container'); //책 리스트 묶음
 			
-			$.ajax({
-				url: './JSON/books.json',
-				type: 'GET',
-				dataType: 'json',
-				success: function(res) { //데이터 전송 성공시 실행
-					//console.log('json ok');
-					$.each(res.books, function(idx, val) {
-						//console.log(idx);
-						//console.log(val);
-						
-						var $books = $('<div/>'); //책 리스트
-						//섬네일 이미지 데이터
-						var $thumb = $('<img/>', {src: this.thumbImg});
-						//타이틀 텍스트 데이터
-						var $title = $('<h3/>', {text: this.title});
-						//가격 텍스트 데이터
-						var $price = $('<p/>', {text: 'EUR ' + this.price});
-						
-						//$books div에 각 데이터 노드를 추가
-						var $imgWrap = $('<div/>').append($thumb);
-						//$books.append($('<img src=' + val.thumbImg + 'alt="thumb" />'));
-						$books.append($imgWrap);
-						$books.append($title);
-						$books.append($price);
-						
-						$books.addClass('books-info');
-						
-						//ajax에서 추가된 노드를 $booksContainer div에 추가
-						$books.appendTo($booksContainer);
-					});
-				}, error: function() {
-					throw new Error('error'); //에러
-				}
-			});
 			/*WINDOW SCROLL*/
 			$(window).scroll(function() {
 				var windowScroll = $(window).scrollTop();
@@ -338,15 +333,15 @@
 				//console.log(Boolean( sectionHeight < windowScroll));
 				
 				//books section 적용
-					//두번째 섹션에 스크롤이 도달했을 때 books-info div가 순차적으로 fadeIn 되도록
 				if( sectionHeight < windowScroll ) {
-					$.each( $('.container .img-list > li'), function( idx, val ) {
+					$.each( $('.container .img-list > li'), function( idx ) {
 						$(this).delay( idx * 400 ).fadeTo( 700, 1 );
 					});
 				//gall section
 				} else if ( 0 < windowScroll <= sectionHeight * 2 ) {
 					//console.log('scrolllllll');
-					$.each( $('.books-info'), function( idx, val ) {
+					//두번째 섹션에 스크롤이 도달했을 때 books-info div가 순차적으로 fadeIn 되도록
+					$.each( $('.books-info'), function( idx ) {
 						//$(this).fadeTo( 800 * idx + 1500, 1 );
 						$(this).delay( idx * 400 ).animate({ 
 							marginTop: 0,
