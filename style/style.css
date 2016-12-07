@@ -234,6 +234,11 @@ section article{
 	background: url('../img/scroll_line_img1.png') no-repeat;
 	background-size: cover;
 }
+#scroll-line.bottom:after{
+	background-image: url('../img/scroll_line_img2.png');
+	background-size: 92px;
+	width: 92px;
+}
 #sec0 .scroll-wrap ul{
 	position: relative;
 	width: 60%;
@@ -272,7 +277,7 @@ section article{
 section article{
 	width: 90%;
 	height: 80%; 
-	border: 1px solid orange;
+	border: 1px solid tomato;
 	margin: 80px auto 0;
 }
 .container > .img-list{}
@@ -309,39 +314,28 @@ article > .container{
 	height: 100%;
 	margin: 0 auto;
 }
-/*typed animation cursor*/
-/* code for animated blinking cursor */
-.typed-cursor{
-	opacity: 1;
-	font-weight: 100;
-	-webkit-animation: blink 0.7s infinite;
-	-moz-animation: blink 0.7s infinite;
-	-ms-animation: blink 0.7s infinite;
-	-o-animation: blink 0.7s infinite;
-	animation: blink 0.7s infinite;
+/*BOOKS AJAX SECTION*/
+#books-section{}
+#books-section article.strArt{}
+#books-section article.strArt h2{}
+#books-section .books-container{
+	width: 90%;
+	margin: 0 auto;
 }
-@-keyframes blink{
-	0% { opacity:1; }
-	50% { opacity:0; }
-	100% { opacity:1; }
+#books-section .books-container .books-info{
+	float: left;
+	width: 250px;
+	margin: 1.5em;
+	text-align: center;
+	line-height: 30px;
 }
-@-webkit-keyframes blink{
-	0% { opacity:1; }
-	50% { opacity:0; }
-	100% { opacity:1; }
+#books-section .books-container .books-info > img{
+	width: 100%;
 }
-@-moz-keyframes blink{
-	0% { opacity:1; }
-	50% { opacity:0; }
-	100% { opacity:1; }
+#books-section .books-container .books-info > h3{
+	font-size: 24x;
 }
-@-ms-keyframes blink{
-	0% { opacity:1; }
-	50% { opacity:0; }
-	100% { opacity:1; }
-}
-@-o-keyframes blink{
-	0% { opacity:1; }
-	50% { opacity:0; }
-	100% { opacity:1; }
+#books-section .books-container .books-info > p{
+	font-size: 12px;
+	color: #555;
 }

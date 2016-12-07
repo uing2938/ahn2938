@@ -20,6 +20,7 @@
 				</ul>
 			</nav>
 		</header>
+		<!--hamburger button-->
 		<div id="hamburger-wrapper">
 			<div id="hamburger">
 				<span></span>
@@ -30,7 +31,7 @@
 				<span></span>
 			</div>
 		</div>
-		<!--MAP-->
+		<!--scroll animate section-->
 		<section id="sec0">
 			<article>
 				<div class="scroll-wrap">
@@ -44,13 +45,12 @@
 				</div>
 			</article>
 		</section>
-		<section id="sec1">
-			<!--typing animation strings-->
-			<div class="typed-strings">
-				<p>Bonjour!</p>
-				<p>Gaspard et Lisa</p>
-			</div>
-			<span id="typed" style="white-space:pre;"></span>
+		<!--ajax books section-->
+		<section id="books-section">
+			<article class="ctrArt">
+				<h2>Books</h2>
+				<div class="books-container"></div>
+			</article>
 		</section>
 		<section id="sec2">
 			<article>
@@ -58,12 +58,6 @@
 				<div class="container">
 					<ul class="img-list"></ul>
 				</div>
-			</article>
-		</section>
-		<section id="sec3">
-			<article class="ctrArt">
-				<h2>Books</h2>
-				<div class="books-container"></div>
 			</article>
 		</section>
 		<div id="pop-up">
@@ -105,6 +99,7 @@
 				'./img/scroll_img1.jpg',
 				'./img/scroll_img2.jpg'
 			]; // 스크롤 이미지 배열 생성
+			
 			$.each(scrollImgs, function(idx, val) {
 				var $li = $('<li></li>');
 				$li.addClass('scroll-img-list');
@@ -122,7 +117,7 @@
 			
 			$.each($scrollImgList, function(i) {
 				$(this).css({
-					top: parseInt( i * 350 + 300) 
+					top: parseInt( i * 450 + 300) 
 				});
 			});
 			
@@ -137,15 +132,25 @@
 					height: parseInt( scroll * 1.5 - 87 ), //87 = scroll-line:after의 height 값
 					
 					//$line의 높이값이 .scroll-wrap의 높이를 초과하지 않도록 제어하는 용도
-					//maxHeight : parseInt( $('.scroll-wrap').innerHeight() )
+					maxHeight : parseInt( $('.scroll-wrap').innerHeight() )
 				});
 				
+				console.log('scroll-wrap : ' + $('#sec0 .scroll-wrap').height() + '/ scroll : ' + scroll );
+				
+				//scrollTop값이 .scroll-wrap의 height(2000px)에서 아티클 height을 뺀 값과 같을 때 = 스크롤이 맨 아래에 도달
+				if ( scroll == parseInt( $('#sec0 .scroll-wrap').height() - $scrollArtc.outerHeight() ) ) {
+					$line.addClass('bottom'); //:after의 background-image 변경
+				} else {
+					$line.removeClass('bottom');
+				}
+				
+				//scroll img list
 				$scrollImgList.each(function() {
 					//$scrollImgList의 position top 값 (position 값이 absolute로 설정되어 있기 때문에 position 사용)
 					var object = $(this).position().top;
 					//var scrollHeight = scroll + $scrollArtc.innerHeight();
 					
-					if ( object < $line.innerHeight() + 174 ) { //after의 height값 * 2
+					if ( object < $line.innerHeight() + 174 ) { //174 = after의 height값 * 2
 						if ( $(this).css('opacity') == 0 ) {
 							$(this).fadeTo(400, 1);
 						}
@@ -221,7 +226,7 @@
 					duration: 500,
 					complete: function() {
 						isRolling = false;
-						if( cPage === 0 ) {
+						if ( cPage === 0 ) {
 							currentPage = maxPage;
 							$slider.css({
 								'margin-left': parseInt(sliderWidth) * currentPage * -1
@@ -238,8 +243,8 @@
 			move(1, sliderWidth);
 			
 			$leftBtn.on('click', function() {
-				if( isRolling === false ) {
-					if( currentPage > 0 ) {
+				if ( isRolling === false ) {
+					if ( currentPage > 0 ) {
 						currentPage--;
 					} else {
 						currentPage = 0;
@@ -248,8 +253,8 @@
 				}
 			});
 			$rightBtn.on('click', function() {
-				if( isRolling === false ) {
-					if( currentPage < maxPage + 1 ) {
+				if ( isRolling === false ) {
+					if ( currentPage < maxPage + 1 ) {
 						currentPage++;
 					} else {
 						currentPage = maxPage + 1;
@@ -290,12 +295,13 @@
 						//섬네일 이미지 데이터
 						var $thumb = $('<img/>', {src: this.thumbImg});
 						//타이틀 텍스트 데이터
-						var $title = $('<p/>', {text: this.title});
+						var $title = $('<h3/>', {text: this.title});
 						//가격 텍스트 데이터
-						var $price = $('<p/>', {text: 'EUR' + this.price});
+						var $price = $('<p/>', {text: 'EUR ' + this.price});
 						
 						//$books div에 각 데이터 노드를 추가
 						$books.append($thumb);
+						//$books.append($('<img src=' + val.thumbImg + 'alt="thumb" />'));
 						$books.append($title);
 						$books.append($price);
 						
