@@ -1,5 +1,6 @@
 /*FONT*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:700');
+@import url('https://fonts.googleapis.com/css?family=Schoolbell');
 button{
 	outline: none;
 	cursor: pointer;
@@ -24,7 +25,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Roboto', sans-serif;
+	/*font-family: 'Roboto', sans-serif;*/
+	font-family: 'Schoolbell', cursive;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -50,9 +52,13 @@ table {
 	border-spacing: 0;
 }
 /**********************TEST*********************/
+::selection, -moz-::selection{
+	background-color: tomato;
+	color: #fff;
+}
 /*TEXT*/
 nav ul li > a, h1, h2{
-	font-family: 'Montserrat Subrayada', sans-serif;
+	font-family: 'Schoolbell', cursive;
 }
 /*NAV*/
 #hamburger-wrapper{
@@ -77,7 +83,7 @@ nav ul li > a, h1, h2{
 	display: block;
 	width: 50%;
 	height: 4px;
-	background: #eb528d;
+	background: #ebafd8;
 	margin-top: 6px;
 	opacity: 1;
 	-webkit-transform: rotate(0deg);
@@ -149,7 +155,7 @@ header{
 	left: 0;
 	width: 0;
 	height: 100vh;
-	background: rgba(0, 0, 0, 0.8);
+	background: #aa9ad7;
 	overflow: hidden;
 	z-index: 1;
 }
@@ -159,7 +165,7 @@ header nav{
 }
 header nav > ul{
 	width: 250px;
-	margin: 0 auto;
+	margin: 250px auto 0;
 }
 header nav li{
 	position: relative;
@@ -177,9 +183,9 @@ header nav li:after{
 	position: absolute;
 	left: 50%;
 	right: 50%;
-	bottom: 50%;
-	height: 3px;
-	background: #fff;
+	bottom: 10px;
+	height: 30px;
+	background: rgba(204, 173, 204, 0.6);
 	-webkit-transition-property: left, right;
 	transition-property: left, right;
 	-webkit-transition-duration: 0.3s;
@@ -191,7 +197,7 @@ header nav li:hover:after{
 	right: 0;
 }
 header nav li > a{
-	color: #fff;
+	color: #353537;
 	font-size: 36px;
 	text-decoration: none;
 }
@@ -205,8 +211,7 @@ section article{
 	overflow-y: scroll;
 }
 /*scroll line section*/
-#sec0{
-}
+#sec0{}
 #sec0 > article{
 	border: none;
 }
@@ -256,14 +261,28 @@ section article{
 	height: 200px;
 	opacity: 0;
 	overflow: hidden;
+	/*
+	-webkit-transform: rotateX(100deg);
+	-moz-transform: rotateX(100deg);
+	-ms-transform: rotateX(100deg);
+	-o-transform: rotateX(100deg);
+	transform: rotateX(100deg);
+	transition: .5s;
+	*/
 }
+/*
+#sec0 .scroll-img-list.active{
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	-ms-transform: rotateX(0deg);
+	-o-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+}
+*/
 #sec0 .scroll-img-list:nth-child(odd){
 	right: 0;
 }
 #sec0 .scroll-img-list > img{}
-#chara{
-	
-}
 #sec1{
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -305,7 +324,6 @@ section article{
 	height: 50vh;
 	background: #f0f0f0;
 	border-radius: 10px;
-/*	opacity: 0;*/
 	z-index: 30;
 }
 #pop-up #pop-up-slider-container{

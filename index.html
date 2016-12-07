@@ -15,10 +15,9 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="#sec0">HOME</a></li>
-					<li><a href="#sec1">TEST</a></li>
-					<li><a href="#sec2">GALLERY</a></li>
-					<li><a href="#sec3">TEST</a></li>
+					<li><a href="#sec0">Scroll</a></li>
+					<li><a href="#sec1">Books</a></li>
+					<li><a href="#sec2">Gallery</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -37,12 +36,12 @@
 		<section id="sec0">
 			<article>
 				<div class="scroll-wrap">
-					<h1></h1>
+					<h2>Scroll Lisa</h2>
 					<div class="wrapper">
 						<!--스크롤 값에 따라 높이가 늘어나는 line-->
 						<div id="scroll-line"></div>
 					</div>
-					<ul>
+					<ul><!--이미지 목록-->
 					</ul>
 				</div>
 			</article>
@@ -162,7 +161,6 @@
 						}
 					}
 				});
-			
 			}); $scrollArtc.scroll(); //스크롤이 안 되는 경우가 없도록 trigger
 			
 		/*POP UP ELEMENT*/
@@ -180,13 +178,12 @@
 			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
 			//li 생성 / 이미지 
 			$.each(popUpImgArr, function(index, val) {
-				var $li = $('<li></li>', {
-					style : 'width :' + '300px'
-				});
+				var $li = $('<li></li>');
 				$li.css({
+					width: 300,
 					display: 'inline-block',
 					float: 'left'
-				})
+				}) //img를 감싸는 li 생성 및 css 조정
 				var $img = $('<img width="100%">');
 				
 				$img.attr('src', val);
@@ -228,12 +225,12 @@
 					duration: 500,
 					complete: function() {
 						isRolling = false;
-						if ( cPage === 0 ) {
+						if ( cPage === 0 ) { //처음 페이지 > 마지막 페이지
 							currentPage = maxPage;
 							$slider.css({
 								'margin-left': parseInt(sliderWidth) * currentPage * -1
 							})
-						} else if ( cPage === maxPage + 1 ) {
+						} else if ( cPage === maxPage + 1 ) { //마지막 페이지 > 처음 페이지
 							currentPage = 1;
 							$slider.css({
 								'margin-left': parseInt(sliderWidth) * currentPage * -1
@@ -269,13 +266,28 @@
 			var $closeBtn = $('.close-btn');
 			
 			//popup function
+			$.each( $thumbimg, function( idx, val ) {
+				$(this).on('click', function() {
+					console.log('thumbnail click');
+					$slider.width(parseInt(sliderWidth) * (maxPage + 2)).css({
+						'margin-left': -1 * idx * parseInt(sliderWidth)
+					});
+					$popUp.fadeIn();
+				});
+			});
+			
+			/*
 			$thumbimg.on('click', function() {
 				$popUp.fadeIn()
 			});
+			*/
 			//popup close
 			$closeBtn.on('click', function() {
 				$popUp.fadeOut('slow', 0, function() {
 					//animation complete
+					$slider.width(parseInt(sliderWidth) * (maxPage + 2)).css({
+						'margin-left': -1 * parseInt(sliderWidth) //이미지 순서를 처음으로 초기화
+					});
 				});
 			});
 			/*BOOKS AJAX*/

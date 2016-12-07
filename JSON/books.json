@@ -35,5 +35,9 @@
 		"thumbImg": "./JSON/img/books_9.jpg",
 		"title": "Gaspard A L'Hopital",
 		"price": "6,00"
+	},{
+		"thumbImg": "./JSON/img/books_10.jpg",
+		"title": "Gaspard à Venise",
+		"price": "86,34"
 	}
 ]}
