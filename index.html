@@ -15,9 +15,9 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="#sec0">Scroll</a></li>
-					<li><a href="#sec1">Books</a></li>
-					<li><a href="#sec2">Gallery</a></li>
+					<li><a href="#scroll-section">Scroll</a></li>
+					<li><a href="#books-section">Books</a></li>
+					<li><a href="#gall-section">Gallery</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -33,10 +33,10 @@
 			</div>
 		</div>
 		<!--scroll animate section-->
-		<section id="sec0">
+		<section id="scroll-section">
 			<article>
 				<div class="scroll-wrap">
-					<h2>Scroll Lisa</h2>
+					<h2>Défiler avec Lisa!</h2>
 					<div class="wrapper">
 						<!--스크롤 값에 따라 높이가 늘어나는 line-->
 						<div id="scroll-line"></div>
@@ -49,13 +49,13 @@
 		<!--ajax books section-->
 		<section id="books-section">
 			<article class="ctrArt">
-				<h2>Books</h2>
+				<h2>Les catastrophes de Gaspard et Lisa</h2>
 				<div class="books-container"></div>
 			</article>
 		</section>
-		<section id="sec2">
+		<section id="gall-section">
 			<article>
-				<h2>Gallery</h2>
+				<h2>Galerie</h2>
 				<div class="container">
 					<ul class="img-list"></ul>
 				</div>
@@ -110,7 +110,7 @@
 				$img.attr('src', val);
 				$img.prependTo($li); //img를 li의 자식요소로 추가
 				
-				$('#sec0 .scroll-wrap > ul').append($li);
+				$('#scroll-section .scroll-wrap > ul').append($li);
 				
 			}); //스크롤 이미지들을 목록으로 묶음
 			
@@ -122,7 +122,7 @@
 				});
 			});
 			
-			var $scrollArtc = $('#sec0 > article');
+			var $scrollArtc = $('#scroll-section > article');
 			/*SCROLL FUNCTION*/
 			$scrollArtc.scroll(function() {
 				var scroll = $scrollArtc.scrollTop();
@@ -136,10 +136,10 @@
 					maxHeight : parseInt( $('.scroll-wrap').innerHeight() )
 				});
 				
-				console.log('scroll-wrap : ' + $('#sec0 .scroll-wrap').height() + '/ scroll : ' + scroll );
+				console.log('scroll-wrap : ' + $('#scroll-section .scroll-wrap').height() + '/ scroll : ' + scroll );
 				
 				//scrollTop값이 .scroll-wrap의 height(2000px)에서 아티클 height을 뺀 값과 같을 때 = 스크롤이 맨 아래에 도달
-				if ( scroll == parseInt( $('#sec0 .scroll-wrap').height() - $scrollArtc.outerHeight() ) ) {
+				if ( scroll == parseInt( $('#scroll-section .scroll-wrap').height() - $scrollArtc.outerHeight() ) ) {
 					$line.addClass('bottom'); //:after의 background-image 변경
 				} else {
 					$line.removeClass('bottom');
@@ -175,7 +175,7 @@
 			var currentPage = 1;
 			
 			//IMAGE ARRAY
-			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg'];
+			var popUpImgArr = ['./img/photo_1.png', './img/photo_2.png', './img/photo_3.jpg', './img/photo_4.jpg', './img/photo_5.jpg', './img/photo_6.jpg', './img/photo_7.jpg', './img/photo_8.jpg'];
 			//li 생성 / 이미지 
 			$.each(popUpImgArr, function(index, val) {
 				var $li = $('<li></li>');
@@ -254,7 +254,7 @@
 			$rightBtn.on('click', function() {
 				if ( isRolling === false ) {
 					if ( currentPage < maxPage + 1 ) {
-						currentPage++;
+						currentPage++; //페이지값 계산
 					} else {
 						currentPage = maxPage + 1;
 					}
@@ -274,6 +274,7 @@
 						//idx 값을 곱하여 $thumbimg 클릭시 해당 이미지가 출력되도록 설정
 						//idx는 0, 1, 2 값을 가지기 때문에 0이 되지 않도록 ( idx + 1 )
 					});
+					currentPage = idx + 1; //현재페이지를 idx 값으로 변경하여 슬라이드시 오류가 없도록
 					$popUp.fadeIn();
 				});
 			});
@@ -301,11 +302,11 @@
 				type: 'GET',
 				dataType: 'json',
 				success: function(res) { //데이터 전송 성공시 실행
-					console.log('json ok');
+					//console.log('json ok');
 					$.each(res.books, function(idx, val) {
 						//console.log(idx);
-						console.log(idx);
-						console.log(val);
+						//console.log(idx);
+						//console.log(val);
 						
 						var $books = $('<div/>'); //책 리스트
 						//섬네일 이미지 데이터
