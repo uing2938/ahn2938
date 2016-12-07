@@ -34,9 +34,9 @@
 		</div>
 		<!--scroll animate section-->
 		<section id="scroll-section">
+			<h2>Défiler avec Lisa!</h2>
 			<article>
 				<div class="scroll-wrap">
-					<h2>Défiler avec Lisa!</h2>
 					<div class="wrapper">
 						<!--스크롤 값에 따라 높이가 늘어나는 line-->
 						<div id="scroll-line"></div>
@@ -48,14 +48,14 @@
 		</section>
 		<!--ajax books section-->
 		<section id="books-section">
+			<h2>Les catastrophes de Gaspard et Lisa</h2>
 			<article class="ctrArt">
-				<h2>Les catastrophes de Gaspard et Lisa</h2>
 				<div class="books-container"></div>
 			</article>
 		</section>
 		<section id="gall-section">
+			<h2>Galerie</h2>
 			<article>
-				<h2>Galerie</h2>
 				<div class="container">
 					<ul class="img-list"></ul>
 				</div>
@@ -139,7 +139,7 @@
 				console.log('scroll-wrap : ' + $('#scroll-section .scroll-wrap').height() + '/ scroll : ' + scroll );
 				
 				//scrollTop값이 .scroll-wrap의 height(2000px)에서 아티클 height을 뺀 값과 같을 때 = 스크롤이 맨 아래에 도달
-				if ( scroll == parseInt( $('#scroll-section .scroll-wrap').height() - $scrollArtc.outerHeight() ) ) {
+				if ( scroll >= parseInt( $('#scroll-section .scroll-wrap').height() - $scrollArtc.outerHeight() ) ) {
 					$line.addClass('bottom'); //:after의 background-image 변경
 				} else {
 					$line.removeClass('bottom');

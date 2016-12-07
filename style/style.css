@@ -207,13 +207,16 @@ section{
 section article{
 	width: 85%;
 	height: 90%;
-	overflow-y: scroll;
+	overflow: hidden;
+	overflow-y: auto;
 }
-section article h2{
+section h2{
+	float: right;
 	font-size: 40px;
+	padding: 30px 100px;
 }
 /*scroll line section*/
-#scroll-section{}
+#scroll-section{background: #eee;}
 #scroll-section > article{
 	border: none;
 }
@@ -289,6 +292,7 @@ section article h2{
 #scroll-section .scroll-img-list > img{
 	width: 100%;
 }
+/*
 #sec1{
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -305,12 +309,14 @@ section article h2{
 	font-weight: 700;
 	letter-spacing: 3px;
 }
+*/
 section article{
 	width: 90%;
 	height: 80%; 
-	/*border: 1px solid tomato;*/
-	margin: 80px auto 0;
+	padding-top: 50px;
+	margin: 0 auto;
 }
+#gall-section{background: #ff9681;}
 .container{
 	width: 900px;
 	margin: 30px auto;
@@ -343,7 +349,8 @@ section article{
 /*	width: 100%;*/
 }
 article > .container{
-	width: 80%;
+	width: 100%;
+	max-width: 1200px;
 	height: 100%;
 	margin: 0 auto;
 }
