@@ -268,6 +268,7 @@ section article{
 	-o-transform: rotateX(100deg);
 	transform: rotateX(100deg);
 	transition: .5s;
+	position값에 오류가 있어 주석처리
 	*/
 }
 /*

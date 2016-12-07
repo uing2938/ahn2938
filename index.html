@@ -270,7 +270,9 @@
 				$(this).on('click', function() {
 					console.log('thumbnail click');
 					$slider.width(parseInt(sliderWidth) * (maxPage + 2)).css({
-						'margin-left': -1 * idx * parseInt(sliderWidth)
+						'margin-left': -1 * ( idx + 1 ) * parseInt(sliderWidth)
+						//idx 값을 곱하여 $thumbimg 클릭시 해당 이미지가 출력되도록 설정
+						//idx는 0, 1, 2 값을 가지기 때문에 0이 되지 않도록 ( idx + 1 )
 					});
 					$popUp.fadeIn();
 				});
